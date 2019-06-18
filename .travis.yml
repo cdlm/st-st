@@ -1,0 +1,11 @@
+language: smalltalk
+sudo: true
+
+os:
+  - linux
+  - osx
+
+smalltalk:
+  - Pharo32-stable
+  - Pharo64-stable
+  - Pharo64-alpha
