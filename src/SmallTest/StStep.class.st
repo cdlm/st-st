@@ -4,6 +4,11 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #converting }
+StStep >> asStStep [
+	^ self
+]
+
 { #category : #running }
 StStep >> numberOfCases [
 	^ self subclassResponsibility
@@ -11,5 +16,11 @@ StStep >> numberOfCases [
 
 { #category : #running }
 StStep >> run [
-	^ self subclassResponsibility
+	"convenience"
+	^ (StPlan on: self) run
+]
+
+{ #category : #running }
+StStep >> runDuring: testPlan [
+	self subclassResponsibility
 ]

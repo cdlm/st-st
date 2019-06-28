@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-StCase class >> onTestClass: aTestClass selector: aTestSelector [
+StCase class >> onSelector: aTestSelector ofClass: aTestClass [
 	^ self new
 		initializeClass: aTestClass selector: aTestSelector;
 		yourself
@@ -17,6 +17,8 @@ StCase class >> onTestClass: aTestClass selector: aTestSelector [
 
 { #category : #initialization }
 StCase >> initializeClass: aTestClass selector: aTestSelector [
+	self assert: aTestSelector isUnary.
+	
 	selector := aTestSelector.
 	testClass := aTestClass
 ]
@@ -27,9 +29,19 @@ StCase >> numberOfCases [
 ]
 
 { #category : #running }
-StCase >> run [
-	^ [ testClass new perform: selector.
-		 StPass new ]
-		on: TestFailure , TestSkip , Error
+StCase >> runDuring: testPlan [
+	| result |
+	testPlan reportCaseStarting: self.
+	result := self runManaged.
+	testPlan reportCaseEnded: self withResult: result
+]
+
+{ #category : #running }
+StCase >> runManaged [
+	^ [ [
+			self setUpFixture.
+			StPass with: self performTest.
+		] ensure: [ self tearDownFixture ]
+	] on: TestFailure , TestSkip , Error
 		do: [ :ex | ex asStResult ]
 ]

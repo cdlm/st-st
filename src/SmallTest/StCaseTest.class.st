@@ -8,8 +8,8 @@ Class {
 StCaseTest >> testItCanError [
 	| case result |
 	case := StCase
-		onTestClass: StExampleTestOfSomething
-		selector: #testThatImmediatelyErrors.
+		onSelector: #testThatImmediatelyErrors
+		ofClass: StExampleTestOfSomething.
 	result := case run.
 	self assert: result isError
 ]
@@ -18,8 +18,8 @@ StCaseTest >> testItCanError [
 StCaseTest >> testItCanFail [
 	| case result |
 	case := StCase
-		onTestClass: StExampleTestOfSomething
-		selector: #testThatImmediatelyFails.
+		onSelector: #testThatImmediatelyFails
+		ofClass: StExampleTestOfSomething.
 	result := case run.
 	self assert: result isFailure
 ]
@@ -28,8 +28,8 @@ StCaseTest >> testItCanFail [
 StCaseTest >> testItCanPass [
 	| case result |
 	case := StCase
-		onTestClass: StExampleTestOfSomething
-		selector: #testJustSmoke.
+		onSelector: #testJustSmoke
+		ofClass: StExampleTestOfSomething.
 	result := case run.
 	self assert: result isPassed
 ]
@@ -38,8 +38,8 @@ StCaseTest >> testItCanPass [
 StCaseTest >> testItCanSkip [
 	| case result |
 	case := StCase
-		onTestClass: StExampleTestOfSomething
-		selector: #testSkipped.
+		onSelector: #testSkipped
+		ofClass: StExampleTestOfSomething.
 	result := case run.
 	self assert: result isSkipped
 ]
@@ -47,10 +47,9 @@ StCaseTest >> testItCanSkip [
 { #category : #tests }
 StCaseTest >> testNext [
 	| case plan |
-	case := StCase onTestClass: StExampleTestOfSomething selector: #testJustSmoke.
+	case := StCase
+		onSelector: #testJustSmoke
+		ofClass: StExampleTestOfSomething.
 	plan := StPlan on: case.
-
-	self
-		assert: plan numberOfCases
-		equals: 1
+	self assert: plan numberOfCases equals: 1
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #StSkip,
-	#superclass : #StResult,
+	#superclass : #StSeverity,
 	#category : #'SmallTest-Core'
 }
 
