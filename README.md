@@ -13,3 +13,6 @@ Metacello new baseline: 'SmallTest;
     repository: 'github://cdlm/st-st/src';
     load.
 ```
+
+[travis]: https://travis-ci.org/cdlm/st-st
+[travis-status]: https://travis-ci.org/cdlm/st-st.svg?branch=master
