@@ -50,6 +50,7 @@ StCase >> runManaged [
 			StCaseResult new
 				case: self;
 				severity: ex asStSeverity;
+				outcome: ex;
 				yourself ]
 ]
 
