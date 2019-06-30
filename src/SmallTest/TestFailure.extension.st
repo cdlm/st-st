@@ -1,6 +1,6 @@
 Extension { #name : #TestFailure }
 
 { #category : #'*SmallTest' }
-TestFailure >> asStResult [
-	^ StFail new
+TestFailure >> asStSeverity [
+	^ StSeverity fail
 ]
