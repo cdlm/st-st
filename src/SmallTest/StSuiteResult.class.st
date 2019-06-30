@@ -1,11 +1,22 @@
 Class {
 	#name : #StSuiteResult,
-	#superclass : #StResult,
+	#superclass : #StStepResult,
 	#instVars : [
-		'suite'
+		'suite',
+		'stepResults'
 	],
 	#category : #'SmallTest-Core'
 }
+
+{ #category : #accessing }
+StSuiteResult >> stepResults [
+	^ stepResults
+]
+
+{ #category : #accessing }
+StSuiteResult >> stepResults: anObject [
+	stepResults := anObject
+]
 
 { #category : #accessing }
 StSuiteResult >> suite [

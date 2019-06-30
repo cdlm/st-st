@@ -1,6 +1,6 @@
 Class {
 	#name : #StCaseResult,
-	#superclass : #StResult,
+	#superclass : #StStepResult,
 	#instVars : [
 		'severity',
 		'case',

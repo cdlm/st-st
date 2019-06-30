@@ -30,7 +30,7 @@ StNullReporter >> planStarting: aTestPlan [
 ]
 
 { #category : #execution }
-StNullReporter >> suiteEnded: aTestSuite [
+StNullReporter >> suiteEnded: aStSuite withResult: aStSuiteResult [ 
 	"Null object design pattern, does nothing on purpose."
 ]
 

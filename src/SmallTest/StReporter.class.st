@@ -31,8 +31,10 @@ StReporter >> planStarting: aTestPlan [
 ]
 
 { #category : #execution }
-StReporter >> suiteEnded: aTestSuite [
-	"Hook called just after a test suite execution ended."
+StReporter >> suiteEnded: aStSuite withResult: aStSuiteResult [ 
+	"Hook called just after a test suite execution ended.
+	 The result of this test suite execution is also provided.
+	"
 	self subclassResponsibility
 ]
 

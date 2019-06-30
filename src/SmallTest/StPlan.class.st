@@ -41,6 +41,16 @@ StPlan >> reportCaseStarting: aStCase [
 	self reporter caseStarting: aStCase
 ]
 
+{ #category : #execution }
+StPlan >> reportSuiteEnded: aStSuite withResult: aStSuiteResult [ 
+	self reporter suiteEnded: aStSuite withResult: aStSuiteResult
+]
+
+{ #category : #execution }
+StPlan >> reportSuiteStarting: aStSuite [ 
+	self reporter suiteStarting: aStSuite
+]
+
 { #category : #accessing }
 StPlan >> reporter [
 	^ reporter

@@ -1,5 +1,5 @@
 Class {
-	#name : #StResult,
+	#name : #StStepResult,
 	#superclass : #Object,
 	#category : #'SmallTest-Core'
 }
