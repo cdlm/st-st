@@ -30,7 +30,7 @@ StCase >> numberOfCases [
 
 { #category : #running }
 StCase >> performTestFor: testInstance [
-	self selector value: testInstance
+	^ self selector value: testInstance
 ]
 
 { #category : #running }
