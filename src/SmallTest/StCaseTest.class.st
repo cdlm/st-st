@@ -11,7 +11,7 @@ StCaseTest >> testItCanError [
 		onSelector: #testThatImmediatelyErrors
 		ofClass: StExampleTestOfSomething.
 	result := case run.
-	self assert: result isError
+	self assert: result severity isError
 ]
 
 { #category : #tests }
@@ -21,7 +21,7 @@ StCaseTest >> testItCanFail [
 		onSelector: #testThatImmediatelyFails
 		ofClass: StExampleTestOfSomething.
 	result := case run.
-	self assert: result isFailure
+	self assert: result severity isFailure
 ]
 
 { #category : #tests }
@@ -31,7 +31,7 @@ StCaseTest >> testItCanPass [
 		onSelector: #testJustSmoke
 		ofClass: StExampleTestOfSomething.
 	result := case run.
-	self assert: result isPassed
+	self assert: result severity isPassed
 ]
 
 { #category : #tests }
@@ -41,7 +41,7 @@ StCaseTest >> testItCanSkip [
 		onSelector: #testSkipped
 		ofClass: StExampleTestOfSomething.
 	result := case run.
-	self assert: result isSkipped
+	self assert: result severity isSkipped
 ]
 
 { #category : #tests }
