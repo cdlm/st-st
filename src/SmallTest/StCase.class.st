@@ -28,7 +28,7 @@ StCase >> numberOfCases [
 	^ 1
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> performTestFor: testInstance [
 	^ self selector value: testInstance
 ]
@@ -42,7 +42,7 @@ StCase >> runDuring: testPlan [
 	^ result
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> runManaged [
 	^ [ self runUnmanaged ]
 		on: TestFailure , TestSkip , Error
@@ -54,7 +54,7 @@ StCase >> runManaged [
 				yourself ]
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> runUnmanaged [
 	|testInstance|
 	testInstance := self testClass new.
@@ -72,7 +72,7 @@ StCase >> selector [
 	^ selector
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> setUpFixtureFor: testInstance [
 	(self testClass canUnderstand: self setUpSelector)
 		ifFalse: [ ^ self ].
@@ -85,7 +85,7 @@ StCase >> setUpSelector [
 	^ #setUp
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> tearDownFixtureFor: testInstance [
 	(self testClass canUnderstand: self tearDownSelector)
 		ifFalse: [ ^ self ].

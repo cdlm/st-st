@@ -23,7 +23,7 @@ StSuite >> runDuring: testPlan [
 	^ result
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StSuite >> runStepsDuring: testPlan [
 	^ StSuiteResult new
 		suite: self;
