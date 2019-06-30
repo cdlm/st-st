@@ -32,8 +32,8 @@ StPlan >> numberOfCases [
 ]
 
 { #category : #execution }
-StPlan >> reportCaseEnded: aStCase withResult: aStError [ 
-	self reporter caseEnded: aStCase withResult: aStError
+StPlan >> reportCaseEnded: aStCase withResult: aStCaseResult [
+	self reporter caseEnded: aStCase withResult: aStCaseResult
 ]
 
 { #category : #execution }

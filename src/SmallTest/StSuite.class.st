@@ -7,6 +7,12 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #initialization }
+StSuite >> initialize [
+	super initialize.
+	self steps: OrderedCollection new
+]
+
 { #category : #running }
 StSuite >> numberOfCases [
 	^ steps
