@@ -9,3 +9,9 @@ smalltalk:
   - Pharo32-stable
   - Pharo64-stable
   - Pharo64-alpha
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - smalltalk: Pharo64-alpha
+      os: linux
