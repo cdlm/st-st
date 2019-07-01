@@ -1,6 +1,6 @@
 Extension { #name : #Error }
 
 { #category : #'*SmallTest' }
-Error >> asStResult [
-	^ StError new
+Error >> asStSeverity [
+	^ StSeverity error
 ]

@@ -28,20 +28,77 @@ StCase >> numberOfCases [
 	^ 1
 ]
 
+{ #category : #'private - running' }
+StCase >> performTestFor: testInstance [
+	^ self selector value: testInstance
+]
+
 { #category : #running }
 StCase >> runDuring: testPlan [
 	| result |
 	testPlan reportCaseStarting: self.
 	result := self runManaged.
-	testPlan reportCaseEnded: self withResult: result
+	testPlan reportCaseEnded: self withResult: result.
+	^ result
 ]
 
-{ #category : #running }
+{ #category : #'private - running' }
 StCase >> runManaged [
-	^ [ [
-			self setUpFixture.
-			StPass with: self performTest.
-		] ensure: [ self tearDownFixture ]
-	] on: TestFailure , TestSkip , Error
-		do: [ :ex | ex asStResult ]
+	^ [ self runUnmanaged ]
+		on: TestFailure , TestSkip , Error
+		do: [ :ex | 
+			StCaseResult new
+				case: self;
+				severity: ex asStSeverity;
+				outcome: ex;
+				yourself ]
+]
+
+{ #category : #'private - running' }
+StCase >> runUnmanaged [
+	|testInstance|
+	testInstance := self testClass new.
+	^ [ self setUpFixtureFor: testInstance.
+	StCaseResult new
+		outcome: (self performTestFor: testInstance);
+		case: self;
+		severity: StSeverity pass;
+		yourself ]
+		ensure: [ self tearDownFixtureFor: testInstance ]
+]
+
+{ #category : #accessing }
+StCase >> selector [
+	^ selector
+]
+
+{ #category : #'private - running' }
+StCase >> setUpFixtureFor: testInstance [
+	(self testClass canUnderstand: self setUpSelector)
+		ifFalse: [ ^ self ].
+		
+	self setUpSelector value: testInstance
+]
+
+{ #category : #accessing }
+StCase >> setUpSelector [
+	^ #setUp
+]
+
+{ #category : #'private - running' }
+StCase >> tearDownFixtureFor: testInstance [
+	(self testClass canUnderstand: self tearDownSelector)
+		ifFalse: [ ^ self ].
+		
+	self tearDownSelector value: testInstance
+]
+
+{ #category : #accessing }
+StCase >> tearDownSelector [
+	^ #tearDown
+]
+
+{ #category : #accessing }
+StCase >> testClass [
+	^ testClass
 ]
