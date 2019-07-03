@@ -8,3 +8,8 @@ Class {
 StFail >> isFailure [
 	^ true
 ]
+
+{ #category : #printing }
+StFail >> printOn: aStream [
+	aStream nextPutAll: 'Failed'
+]

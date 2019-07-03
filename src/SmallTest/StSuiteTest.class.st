@@ -29,7 +29,6 @@ StSuiteTest >> testRun [
 	| suite result |
 	suite := StSuite new
 					steps: { 
-						StCase onSelector: #testThatSkips ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testJustSmoke ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testSkipped ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testThatImmediatelyErrors ofClass: StExampleTestOfSomething.
@@ -40,7 +39,7 @@ StSuiteTest >> testRun [
 	result := suite run.
 	self assert: result class equals: StSuiteResult.
 	self assert: result suite equals: suite.
-	self assert: result stepResults size equals: 5.
+	self assert: result stepResults size equals: 4.
 	self assertCollection: (result stepResults collect: #case) hasSameElements: suite steps
 ]
 

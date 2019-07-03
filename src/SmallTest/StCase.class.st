@@ -33,6 +33,14 @@ StCase >> performTestFor: testInstance [
 	^ self selector value: testInstance
 ]
 
+{ #category : #printing }
+StCase >> printOn: aStream [
+	aStream
+		print: self testClass;
+		nextPutAll: '>>';
+		print: self selector
+]
+
 { #category : #running }
 StCase >> runDuring: testPlan [
 	| result |
@@ -47,11 +55,10 @@ StCase >> runManaged [
 	^ [ self runUnmanaged ]
 		on: TestFailure , TestSkip , Error
 		do: [ :ex | 
-			StCaseResult new
-				case: self;
-				severity: ex asStSeverity;
-				outcome: ex;
-				yourself ]
+			StCaseResult
+				of: self
+				outcome: ex
+				severity: ex asStSeverity ]
 ]
 
 { #category : #'private - running' }
@@ -59,11 +66,10 @@ StCase >> runUnmanaged [
 	|testInstance|
 	testInstance := self testClass new.
 	^ [ self setUpFixtureFor: testInstance.
-	StCaseResult new
-		outcome: (self performTestFor: testInstance);
-		case: self;
-		severity: StSeverity pass;
-		yourself ]
+		StCaseResult
+			of: self
+			outcome: (self performTestFor: testInstance)
+			severity: StSeverity pass ]
 		ensure: [ self tearDownFixtureFor: testInstance ]
 ]
 

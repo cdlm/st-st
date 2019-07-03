@@ -8,3 +8,8 @@ Class {
 StSkip >> isSkipped [
 	^ true
 ]
+
+{ #category : #printing }
+StSkip >> printOn: aStream [
+	aStream nextPutAll: 'Skipped'
+]

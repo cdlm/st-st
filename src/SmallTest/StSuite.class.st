@@ -31,11 +31,9 @@ StSuite >> runDuring: testPlan [
 
 { #category : #'private - running' }
 StSuite >> runStepsDuring: testPlan [
-	^ StSuiteResult new
-		suite: self;
-		stepResults: (self steps collect: [ :step |
-			step runDuring: testPlan ]);
-		yourself
+	^ StSuiteResult
+		of: self
+		results: (self steps collect: [ :step | step runDuring: testPlan ])
 ]
 
 { #category : #accessing }

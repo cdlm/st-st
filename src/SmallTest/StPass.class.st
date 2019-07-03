@@ -8,3 +8,8 @@ Class {
 StPass >> isPassed [
 	^ true
 ]
+
+{ #category : #printing }
+StPass >> printOn: aStream [
+	aStream nextPutAll: 'Passed'
+]
