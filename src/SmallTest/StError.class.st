@@ -4,6 +4,11 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #merging }
+StError >> < other [
+	^ false
+]
+
 { #category : #testing }
 StError >> isError [
 	^ true

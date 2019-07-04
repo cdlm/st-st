@@ -4,6 +4,11 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #merging }
+StPass >> < other [
+	^ other isFailure | other isError
+]
+
 { #category : #testing }
 StPass >> isPassed [
 	^ true

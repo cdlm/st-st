@@ -24,6 +24,11 @@ StSeverity class >> skip [
 	^ StSkip new
 ]
 
+{ #category : #merging }
+StSeverity >> < other [
+	^ self subclassResponsibility
+]
+
 { #category : #testing }
 StSeverity >> isError [
 	^ false
@@ -42,4 +47,12 @@ StSeverity >> isPassed [
 { #category : #testing }
 StSeverity >> isSkipped [
 	^ false
+]
+
+{ #category : #merging }
+StSeverity >> max: other [
+	^ self < other
+		ifTrue: [ other ]
+		ifFalse: [ self ]
+		
 ]

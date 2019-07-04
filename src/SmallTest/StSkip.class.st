@@ -4,6 +4,11 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #merging }
+StSkip >> < other [
+	^ other isSkipped not
+]
+
 { #category : #testing }
 StSkip >> isSkipped [
 	^ true
