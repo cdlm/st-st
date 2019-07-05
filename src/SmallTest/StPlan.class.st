@@ -18,7 +18,7 @@ StPlan class >> on: aStep [
 { #category : #initialization }
 StPlan >> initialize [
 	super initialize.
-	self reporter: StNullReporter new
+	self reporter: StReporter new
 ]
 
 { #category : #accessing }

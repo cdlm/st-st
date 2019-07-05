@@ -27,8 +27,7 @@ StSuiteTest >> reportSuiteStarting: aStSuite [
 { #category : #tests }
 StSuiteTest >> testRun [
 	| suite result |
-	suite := StSuite new
-					steps: { 
+	suite := StSuite steps: { 
 						StCase onSelector: #testJustSmoke ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testSkipped ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testThatImmediatelyErrors ofClass: StExampleTestOfSomething.

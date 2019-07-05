@@ -7,10 +7,27 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
+{ #category : #'instance creation' }
+StSuite class >> steps: aCollection [
+	^ self new
+		addSteps: aCollection;
+		yourself
+]
+
+{ #category : #accessing }
+StSuite >> addStep: aStep [
+	steps add: aStep
+]
+
+{ #category : #accessing }
+StSuite >> addSteps: aCollection [
+	aCollection do: [ :each | self addStep: each ]
+]
+
 { #category : #initialization }
 StSuite >> initialize [
 	super initialize.
-	self steps: OrderedCollection new
+	steps := OrderedCollection new
 ]
 
 { #category : #running }
@@ -39,9 +56,4 @@ StSuite >> runStepsDuring: testPlan [
 { #category : #accessing }
 StSuite >> steps [
 	^ steps
-]
-
-{ #category : #accessing }
-StSuite >> steps: anObject [
-	steps := anObject
 ]

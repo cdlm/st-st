@@ -4,9 +4,21 @@ Class {
 	#category : #'SmallTest-Core'
 }
 
-{ #category : #'as yet unclassified' }
-StTranscriptReporter >> reportCase: aTestCase during: aBlock [
-	Transcript print: 'Running ' , aTestCase title , '...'; flush.
-	aBlock value.
-	Transcript print: 'passed.'; cr; flush. 
+{ #category : #execution }
+StTranscriptReporter >> caseEnded: aTestCase withResult: testResult [
+	Transcript
+		print: testResult severity;
+		nextPut: $.;
+		cr; flush
+
+]
+
+{ #category : #execution }
+StTranscriptReporter >> caseStarting: aTestCase [
+	Transcript
+		print: 'Running ';
+		print: aTestCase;
+		print: '...';
+		flush
+
 ]
