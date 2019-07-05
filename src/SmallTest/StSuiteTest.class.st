@@ -32,8 +32,7 @@ StSuiteTest >> testRun [
 						StCase onSelector: #testSkipped ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testThatImmediatelyErrors ofClass: StExampleTestOfSomething.
 						StCase onSelector: #testThatImmediatelyFails ofClass: StExampleTestOfSomething
-					};
-					yourself.
+					}.
 					
 	result := suite run.
 	self assert: result class equals: StSuiteResult.
